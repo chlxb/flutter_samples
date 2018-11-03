@@ -1,10 +1,10 @@
 [
-  {"title": "第一个 flutter 应用"},
-  {"title": "使用外部包"},
-  {"title": "有状态的部件"},
-  {"title": "无限滚动ListView"},
-  {"title": "导航到新页面"},
-  {"title": "Flutter 布局教程"},
-  {"title": "添加交互"},
-  {"title": "本地 json 资源使用"}
+  {"title": "第一个 flutter 应用", "routerName": "/FirstAppPage"},
+  {"title": "使用外部包", "routerName": "/FirstAppPage"},
+  {"title": "有状态的部件", "routerName": "/StatefulWidget"},
+  {"title": "无限滚动ListView", "routerName": "/InfiniteListPage"},
+  {"title": "添加交互", "routerName": "/InteractivityPage"},
+  {"title": "Flutter 布局教程", "routerName": "/FirstAppPage"},
+  {"title": "添加交互", "routerName": "/FirstAppPage"},
+  {"title": "本地 json 资源使用", "routerName": "/FirstAppPage"}
 ]
