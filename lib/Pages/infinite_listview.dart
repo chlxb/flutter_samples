@@ -14,12 +14,19 @@ class InfiniteListPage extends StatelessWidget {
 }
 
 class Suggestion extends StatefulWidget {
+  Suggestion({this.shouldInteractivity = false}) : super();
+  bool shouldInteractivity;
   @override
-  _SuggestionState createState() => _SuggestionState();
+  _SuggestionState createState() => _SuggestionState(shouldInteractivity: shouldInteractivity);
 }
 
+
 class _SuggestionState extends State<Suggestion> {
+  _SuggestionState({@required this.shouldInteractivity}) : super();
+
+  bool shouldInteractivity;
   final _suggestions = <WordPair>[];
+  final _saved = new Set<WordPair>();
   final _biggerFont = const TextStyle(fontSize: 18);
 
   Widget _buildSuggestions() {
@@ -38,6 +45,18 @@ class _SuggestionState extends State<Suggestion> {
   }
 
   Widget _buildRow(WordPair pair) {
+    final alreadySaved = _saved.contains(pair);
+    if (shouldInteractivity) {
+      return new ListTile(
+        title: new  Text(pair.asPascalCase, style: _biggerFont,),
+        trailing: new Icon(alreadySaved ? Icons.favorite : Icons.favorite_border, color: alreadySaved ? Colors.red : null,),
+        onTap: () {
+          setState(() {
+            alreadySaved ? _saved.remove(pair) : _saved.add(pair);
+          });
+        },
+      );
+    }
     return new ListTile(
       title: new  Text(pair.asPascalCase, style: _biggerFont,),
     );

@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:flutter/services.dart';
 import 'dart:convert';
 
-typedef void ListItemDidTapped(BuildContext context, int idx);
+typedef void ListItemDidTapped(BuildContext context, String routerName);
 
 class SampleIndexList extends StatefulWidget {
   SampleIndexList({this.onItemTap}) : super();
@@ -16,12 +16,14 @@ class SampleIndexList extends StatefulWidget {
 
 class ListModel {
   final String title;
+  final String routerName;
 
-  ListModel({this.title});
+  ListModel({this.title, this.routerName});
 
   factory ListModel.fromJson(Map<String, dynamic> json) {
     return ListModel(
       title: json['title'],
+      routerName: json['routerName'],
     );
   }
 }
@@ -54,8 +56,8 @@ class _ReadAndWriteDemoState extends State<SampleIndexList> {
     }
   }
 
-  void _handleTap(int index) {
-    widget.onItemTap(context, index);
+  void _handleTap(String name) {
+    widget.onItemTap(context, name);
   }
 
   List<Widget> _items() {
@@ -63,7 +65,7 @@ class _ReadAndWriteDemoState extends State<SampleIndexList> {
     for (var model in _data) {
       items.add(new ListTile(
         onTap: () {
-          _handleTap(_data.indexOf(model));
+          _handleTap(model.routerName);
         },
         leading: new Icon(Icons.map),
         title: new Text(model.title, style: new TextStyle(fontSize: 20.0, color: Colors.amberAccent[400]),),

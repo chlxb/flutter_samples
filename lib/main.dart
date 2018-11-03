@@ -3,6 +3,7 @@ import 'package:flutter1_llayout/index_list.dart';
 import 'package:flutter1_llayout/Pages/first_app.dart';
 import 'package:flutter1_llayout/Pages/statefule_widget.dart';
 import 'package:flutter1_llayout/Pages/infinite_listview.dart';
+import 'package:flutter1_llayout/Pages/InteractivityPage.dart';
 
 void main() => runApp(new MyApp());
 
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
         '/Pages/ExternalPackage': (_) => new FirstAppPage(),
         '/Pages/StatefulWidget': (_) => new StatefuleWidgetPage(),
         '/Pages/InfiniteListPage': (context) => new InfiniteListPage(),
+        '/Pages/InteractivityPage': (_) => new InteractivityPage(),
       },
     );
   }
@@ -44,25 +46,10 @@ class MyApp extends StatelessWidget {
 
 class HomePage extends StatelessWidget {
 
-  void _handleListItemTap(BuildContext context, int index) {
-    Type t = Type.values[index];
-    switch (t) {
-      case Type.FirstApp:
-        print(t);
-        Navigator.of(context).pushNamed('/Pages/FirstAppPage');
-        break;
-      case Type.ExternalPackage:
-        Navigator.of(context).pushNamed('/Pages/FirstAppPage');
-        break;
-      case Type.StatefulWidget:
-        Navigator.of(context).pushNamed('/Pages/StatefulWidget');
-        break;
-      case Type.InfiniteListView:
-        Navigator.of(context).pushNamed('/Pages/InfiniteListPage');
-        break;
-      default:
-        break;
-    }
+  void _handleListItemTap(BuildContext context, String name) {
+    print(name);
+    var routerName = '/Pages' + name;
+    Navigator.of(context).pushNamed(routerName);
   }
 
   @override
