@@ -15,7 +15,7 @@ class InfiniteListPage extends StatelessWidget {
 
 class Suggestion extends StatefulWidget {
   Suggestion({this.shouldInteractivity = false}) : super();
-  bool shouldInteractivity;
+  final bool shouldInteractivity;
   @override
   _SuggestionState createState() => _SuggestionState(shouldInteractivity: shouldInteractivity);
 }

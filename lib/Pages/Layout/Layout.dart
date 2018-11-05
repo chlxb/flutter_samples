@@ -74,12 +74,14 @@ class Lakes extends StatelessWidget {
       appBar: new AppBar(
         title: new Text("layout"),
       ),
-      body: ListView(children: <Widget>[
-        _buildHeader(),
-        _buildTitle(),
-        _buildButtons(context),
-        _buildText(),
-      ],),
+      body: ListView(
+        children: <Widget>[
+          _buildHeader(),
+          _buildTitle(),
+          _buildButtons(context),
+          _buildText(),
+        ],
+      ),
     );
   }
 }

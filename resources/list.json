@@ -4,7 +4,8 @@
   {"title": "有状态的部件", "routerName": "/StatefulWidget"},
   {"title": "无限滚动ListView", "routerName": "/InfiniteListPage"},
   {"title": "添加交互", "routerName": "/InteractivityPage"},
-  {"title": "Flutter 布局教程", "routerName": "/FirstAppPage"},
+  {"title": "Flutter 布局教程", "routerName": "/Layout/lakes"},
+  {"title": "常用布局 Widgets", "routerName": "/Layout/LayoutWidgets"},
   {"title": "添加交互", "routerName": "/FirstAppPage"},
   {"title": "本地 json 资源使用", "routerName": "/FirstAppPage"}
 ]
