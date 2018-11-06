@@ -29,8 +29,11 @@ class _RecommendListState extends State<RecommendList> {
   List<RecommendModel> _datas = [];
 
   Widget _buildLisTile(BuildContext context, int index) {
+    var model = _datas[index];
     return new ListTile(
-      title: new Text(_datas[index].title),
+      title: new Text(model.title, style: new TextStyle(fontSize: 20, fontWeight: FontWeight.w400),),
+      subtitle: new Text(model.subtitle),
+      leading: model.type == "theater" ? Icon(Icons.theaters, color: Colors.orangeAccent[400],) : Icon(Icons.restaurant, color: Colors.orangeAccent[400],),
     );
   }
 
@@ -45,9 +48,9 @@ class _RecommendListState extends State<RecommendList> {
   @override
   void initState() {
     super.initState();
-    _getLocalDatas().then((List<RecommendModel> list) {
+    _getLocalDatas().then((List<RecommendModel> datas) {
       setState(() {
-        _datas = list;
+        _datas = datas;
       });
     });
   }
@@ -57,8 +60,8 @@ class _RecommendListState extends State<RecommendList> {
       String locale = await rootBundle.loadString('resources/datas.json');
       List<dynamic> datas = json.decode(locale);
       List<RecommendModel> list = [];
-      for (var en in datas) {
-        RecommendModel p = RecommendModel.formJson(en);
+      for (var js in datas) {
+        RecommendModel p = RecommendModel.formJson(js);
         list.add(p);
       }
       return list;
@@ -71,10 +74,11 @@ class _RecommendListState extends State<RecommendList> {
 class RecommendModel {
   final String title;
   final String subtitle;
+  final String type;
   
-  RecommendModel({this.title, this.subtitle});
+  RecommendModel({this.title, this.subtitle, this.type});
   
   factory RecommendModel.formJson(Map<String, dynamic> json) {
-    return RecommendModel(title: json['title'], subtitle: json['subtitle']);
+    return RecommendModel(title: json['title'], subtitle: json['subtitle'], type: json['type']);
   }
 }
